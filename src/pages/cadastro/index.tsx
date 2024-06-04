@@ -2,9 +2,14 @@ import '@/app/layout';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
-export default function Login() {
+export default function Cadastro() {
   return (
     <>
+      <Link href="/">
+        <h1 className="absolute top-0 left-0 text-white font-bold text-2xl md:text-2xl mt-4 ml-4 z-10">
+          OceanWise
+        </h1>
+      </Link>
       <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-b from-[#0077b6] to-[#00a8e8] px-4 py-12 md:px-6">
         <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-2xl md:p-8 shadow-md">
           <div className="space-y-6 text-center">
