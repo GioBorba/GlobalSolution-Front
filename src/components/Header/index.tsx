@@ -4,7 +4,7 @@ export default function Header() {
   return (
     
     <header className="container mx-auto flex items-center justify-between py-6 px-4 md:px-6">
-        <Link href="/" className="bg:text-3xl font-bold sm:text-sm">
+        <Link href="/" className="text-3xl font-bold">
             OceanWise
         </Link>
         <nav className="flex items-center gap-4">
