@@ -38,7 +38,7 @@ export default function App() {
           </div>
         </div>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPXW_iLe8AqVi0iqweO6S6gL8ta1cWko9zYw&usqp=CAU"
+          src="https://img.odcdn.com.br/wp-content/uploads/2023/07/fundo-do-oceano.jpg"
           alt="Ocean"
           width={300}
           height={300}
