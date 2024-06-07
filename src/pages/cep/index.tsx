@@ -16,7 +16,7 @@ interface Weather {
   condition: string;
 }
 
-export default function WeatherInfo() {
+export default function ApiInfo() {
   const [address, setAddress] = useState<Address | null>(null);
   const [weather, setWeather] = useState<Weather | null>(null);
   const [cepError, setCepError] = useState<string | null>(null);
@@ -66,9 +66,9 @@ export default function WeatherInfo() {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen w-full bg-gradient-to-b from-[#0077b6] to-[#00a8e8] text-black">
+      <div className="flex flex-col min-h-screen w-full bg-gradient-to-b from-[#0077b6] to-[#00a8e8] text-white ">
         <Header />
-        <div className="flex flex-col items-center justify-center flex-grow w-full max-w-5xl mx-auto py-16 px-6 sm:px-8 lg:px-10">
+        <div className="flex flex-col items-center justify-center flex-grow w-full max-w-5xl mx-auto py-16 px-6 sm:px-8 lg:px-10 text-black ">
           <div className="w-full flex flex-col md:flex-row md:space-x-8 space-y-8 md:space-y-0">
             <div className="flex flex-col items-center w-full md:w-1/2">
               <input 
