@@ -7,6 +7,8 @@ import axios from 'axios';
 interface Address {
   city: string;
   state: string;
+  neighborhood: string;
+  street: string;
 }
 
 interface Weather {
@@ -33,8 +35,8 @@ export default function WeatherInfo() {
         setAddress(null);
         setWeather(null);
       } else {
-        const { localidade: city, uf: state } = cepResponse.data;
-        setAddress({ city, state });
+        const { localidade: city, uf: state, bairro: neighborhood, logradouro: street } = cepResponse.data;
+        setAddress({ city, state, neighborhood, street });
         setCepError(null);
       }
     } catch (error) {
@@ -92,6 +94,12 @@ export default function WeatherInfo() {
                     </div>
                     <div>
                       <span className="font-medium">Estado:</span> {address.state}
+                    </div>
+                    <div>
+                      <span className="font-medium">Bairro:</span> {address.neighborhood}
+                    </div>
+                    <div>
+                      <span className="font-medium">Rua:</span> {address.street}
                     </div>
                   </div>
                 </div>
