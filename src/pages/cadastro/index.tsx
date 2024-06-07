@@ -1,8 +1,41 @@
 import '@/app/layout';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Cadastro() {
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setUserData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/users/register', userData);
+      if (response.status === 201) {
+        alert('User registered successfully!');
+      } else {
+        alert('Registration failed!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Registration failed!');
+    }
+  };
+
   return (
     <>
       <Link href="/">
@@ -15,7 +48,7 @@ export default function Cadastro() {
           <div className="space-y-6 text-center">
             <h1 className="text-3xl font-bold md:text-4xl mt-6">Criar uma conta</h1>
           </div>
-          <form className="grid gap-4 md:gap-6 mt-10">
+          <form onSubmit={handleSubmit} className="grid gap-4 md:gap-6 mt-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div className="space-y-2 bg-white rounded-md shadow-lg">
                 <label htmlFor="firstName" className="block text-sm font-medium text-black">
@@ -24,6 +57,9 @@ export default function Cadastro() {
                 <input
                   id="name"
                   type="text"
+                  name="firstName"
+                  value={userData.firstName}
+                  onChange={handleChange}
                   placeholder="Digite seu nome"
                   className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] text-black dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
                 />
@@ -35,6 +71,9 @@ export default function Cadastro() {
                 <input
                   id="lastName"
                   type="text"
+                  name="lastName"
+                  value={userData.lastName}
+                  onChange={handleChange}
                   placeholder="Digite seu sobrenome"
                   className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
                 />
@@ -47,6 +86,9 @@ export default function Cadastro() {
               <input
                 id="phone"
                 type="tel"
+                name="phone"
+                value={userData.phone}
+                onChange={handleChange}
                 placeholder="(XX) XXXXX-XXXX"
                 className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
               />
@@ -58,6 +100,9 @@ export default function Cadastro() {
               <input
                 id="email"
                 type="email"
+                name="email"
+                value={userData.email}
+                onChange={handleChange}
                 placeholder="m@exemplo.com"
                 className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
               />
@@ -69,6 +114,9 @@ export default function Cadastro() {
               <input
                 id="password"
                 type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleChange}
                 placeholder='Digite sua senha'
                 className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
               />
@@ -85,7 +133,7 @@ export default function Cadastro() {
             <Link href="/login" className="text-[#00a8e8] hover:underline">
               Faça login
             </Link>
-        </div>
+          </div>
         </div>
       </div>
       <Footer/>

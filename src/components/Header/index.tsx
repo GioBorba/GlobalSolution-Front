@@ -18,7 +18,7 @@ export default function Header() {
                 href="/cep"
                 className="text-sm font-medium transition-colors hover:text-gray-200 hover:underline hover:underline-offset-4"
             >
-                Clima
+                APIs
             </Link>
             <Link
                 href="/missao"
