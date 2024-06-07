@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import '@/app/layout'
 
 export default function Login() {
   const [formData, setFormData] = useState({

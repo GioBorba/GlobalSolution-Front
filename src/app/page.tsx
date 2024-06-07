@@ -4,7 +4,7 @@ export default function App() {
   return (
     <>
     <Header/>
-    <main className="container mx-auto flex flex-col items-center justify-between gap-12 px-4 py-12 md:px-6 md:py-24 lg:flex-row lg:gap-8">
+    <main className="container mx-auto flex flex-col items-center justify-between gap-12 px-4 py-12 md:px-6 md:py-24 lg:flex-row lg:gap-8 sm:w-full">
       <div className="max-w-prose space-y-6 text-center md:text-left">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">SALVE O OCEANO</h1>
         <p>
