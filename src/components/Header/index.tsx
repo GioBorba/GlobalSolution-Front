@@ -15,6 +15,12 @@ export default function Header() {
                 Iniciativas
             </Link>
             <Link
+                href="/cep"
+                className="text-sm font-medium transition-colors hover:text-gray-200 hover:underline hover:underline-offset-4"
+            >
+                Clima
+            </Link>
+            <Link
                 href="/missao"
                 className="text-sm font-medium transition-colors hover:text-gray-200 hover:underline hover:underline-offset-4"
             >
