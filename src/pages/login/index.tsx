@@ -1,8 +1,38 @@
-import '@/app/layout';
-import Footer from '@/components/Footer';
+import { useState } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 export default function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/users/login', formData);
+      if (response.status === 200) {
+        alert('Login successful!');
+        
+      } else {
+        alert('Login failed!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Login failed!');
+    }
+  };
+
   return (
     <>
       <Link href="/">
@@ -15,7 +45,7 @@ export default function Login() {
           <div className="space-y-6 text-center">
             <h1 className="text-3xl font-bold md:text-4xl">Login</h1>
           </div>
-          <form className="grid gap-4 md:gap-6">
+          <form onSubmit={handleSubmit} className="grid gap-4 md:gap-6">
             <div className="space-y-2 bg-white rounded-md shadow-lg">
               <label htmlFor="email" className="block text-sm font-medium text-black">
                 E-mail
@@ -23,6 +53,9 @@ export default function Login() {
               <input
                 id="email"
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="m@exemplo.com"
                 className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
               />
@@ -34,6 +67,9 @@ export default function Login() {
               <input
                 id="password"
                 type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="Digite sua senha"
                 className="block w-full rounded-md border-gray-300 focus:border-[#00a8e8] focus:ring-[#00a8e8] dark:placeholder-gray-400 sm:text-sm px-3 py-2 shadow-md"
               />
